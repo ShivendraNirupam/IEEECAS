@@ -15,11 +15,15 @@ const Hero = ({ id }) => {
       id={id}
       className='flex p-5 lg:mt-20 flex-col lg:flex-row items-center justify-between min-h-[calc(90vh-6rem)] '
     >
+        
+          <div className='lg:hidden h-[500px] w-[500px] m-0 p-0'>
+            <img src="/assets/spline.png" alt="spline" />
+          </div>
       <div
         data-aos='fade-right'
         data-aos-offset='300'
         data-aos-easing='ease-in-sine'
-        className='max-w-xl ml-[5%] z-10 mt-[90%] md:mt-[60%] lg:mt-0'
+        className='max-w-xl ml-[5%] z-10 md:mt-[60%] lg:mt-0'
       >
         <div className='relative w-[90%] sm:w-48 h-10 bg-gradient-to-r from-[#656565] to-[#2f620b] shadow-[0_0_15px_rgba(255,255,255,0.4)] rounded-full'>
           <div className='absolute inset-[3px] bg-black rounded-full flex items-center justify-center gap-1'>
@@ -63,7 +67,7 @@ const Hero = ({ id }) => {
       {loaded && (
         <Suspense fallback={<div className="text-white animate-pulse">Loading 3D...</div>}>
           <LazySpline
-            className='absolute lg:top-0 top-[-20%] bottom-0 lg:left-[25%] sm:left[-2%]'
+            className='hidden md:block absolute lg:top-0 top-[-20%] bottom-0 lg:left-[25%] sm:left[-2%]'
             scene='https://prod.spline.design/FsQl7Ixnty0zphIX/scene.splinecode'
             data-aos='fade-zoom-in'
             data-aos-easing='ease-in-back'
@@ -71,6 +75,7 @@ const Hero = ({ id }) => {
             data-aos-offset='0'
             data-aos-duration='1000'
           />
+
         </Suspense>
       )}
     </main>
