@@ -38,23 +38,34 @@
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
     <script>
-    window.addEventListener("load", () => {
-      const loader = document.getElementById("loader");
-      const root = document.getElementById("root");
+  window.addEventListener("load", () => {
+    const loader = document.getElementById("loader");
+    const root = document.getElementById("root");
 
-      loader.style.transition = "opacity 0.5s";
-      loader.style.opacity = "0";
+    loader.style.transition = "opacity 0.5s";
+    loader.style.opacity = "0";
 
-      setTimeout(() => {
-        loader.style.display = "none";
-        root.style.display = "block";
-        
-        const script = document.createElement("script");
-        script.type = "module";
-        script.src = "/src/main.jsx";
-        document.body.appendChild(script);
-      }, 500); 
-    });
-  </script>
+    setTimeout(() => {
+      loader.style.display = "none";
+      root.style.display = "block";
+
+      const images = document.querySelectorAll("img");
+      images.forEach((img) => {
+        img.setAttribute("loading", "lazy");
+      });
+        if (!img.hasAttribute("alt") || img.getAttribute("alt").trim() === "") {
+        const src = img.getAttribute("src") || "";
+        const baseName = src.split("/").pop()?.split(".")[0] || `Image ${index + 1}`;
+        const formatted = baseName.replace(/[-_]/g, " ").replace(/\b\w/g, (c) => c.toUpperCase());
+        img.setAttribute("alt", formatted);
+      }
+
+      const script = document.createElement("script");
+      script.type = "module";
+      script.src = "/src/main.jsx";
+      document.body.appendChild(script);
+    }, 500);
+  });
+</script>
   </body>
 </html>
