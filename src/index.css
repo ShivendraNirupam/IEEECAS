@@ -1,0 +1,102 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+
+    body{
+        @apply bg-black text-white relative font-sans h-screen overflow-x-hidden;
+    }
+    
+}
+
+.book{
+  width: 100vw;
+  height: 125vh;
+  position: relative;
+  background: rgba(0, 0, 0, 0);
+  
+}
+
+canvas{
+  display: block;
+  pointer-events: all
+}
+
+.brainContainer {
+  width: 200px;
+  height: 200px;
+  overflow: hidden;
+  cursor: pointer;
+  z-index: 1; /* Changed from -1 to 1 */
+  position:absolute;
+  top: 10%;
+  opacity: 0.6;
+ 
+}
+svg {
+  width: 200px;
+  height: 200px;
+ 
+}
+
+path {
+  fill: transparent;
+}
+
+.brainPath {
+  stroke: #ffffff;
+  stroke-width: 3;
+}
+
+.brainCircle {
+  stroke: #ffffff;
+  fill: #ffffff;
+}
+
+.brainRect {
+  stroke: #ffffff;
+  fill: #ffffff;
+}
+
+.brainEllipse {
+  stroke: #ffffff;
+  fill: #ffffff;
+}
+
+.animatePaths {
+  animation: goPath 3000ms alternate infinite;
+}
+
+.animateCircles {
+  animation: goCircle 3000ms alternate infinite;
+}
+
+.animateRects {
+  animation: goRect 3000ms alternate infinite;
+}
+
+@keyframes goPath {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes goRect {
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes goCircle {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
