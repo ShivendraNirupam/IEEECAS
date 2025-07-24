@@ -3,7 +3,6 @@ import { Canvas } from "@react-three/fiber";
 import { Suspense } from "react";
 import { Experience } from "./Experience";
 import { UI } from "./UI";
-import CarouselGallery from "./MobileGallery";
 
 const Gallery = ({ id }) => {
   return (
@@ -12,7 +11,6 @@ const Gallery = ({ id }) => {
         <div className="lg:hidden flex flex-col justify-center items-center">
           <h1 className="text-3xl italic">Event Gallery</h1>
         </div>
-        <CarouselGallery />
       </div>
       <div className="book hidden xl:flex flex-col absolute justify-center items-center">
         <Loader />
