@@ -1,16 +1,59 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="description" content="IEEE Circuits and Systems (CAS) Society Student Branch empowers students to innovate at the intersection of electronics, signal processing, and embedded systems. Through hands-on workshops, research opportunities, and tech-driven events, we bridge the gap between theory and real-world applications—fueling tomorrow’s circuit designers, system architects, and semiconductor pioneers.">
+    <meta
+      name="description"
+      content="IEEE Circuits and Systems (CAS) Society Student Branch empowers students to innovate at the intersection of electronics, signal processing, and embedded systems. Through hands-on workshops, research opportunities, and tech-driven events, we bridge the gap between theory and real-world applications—fueling tomorrow’s circuit designers, system architects, and semiconductor pioneers."
+    />
 
     <link rel="icon" type="image/svg+xml" href="/assets/CAS-Logo-Color.png" />
-    <link href='https://cdn.boxicons.com/fonts/basic/boxicons.min.css' rel='stylesheet'>
+    <link
+      href="https://cdn.boxicons.com/fonts/basic/boxicons.min.css"
+      rel="stylesheet"
+    />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>IEEE CAS Vit Vellore</title>
   </head>
   <body>
+    <div
+      id="loader"
+      style="
+        background: black;
+        color: white;
+        font-size: 1.5rem;
+        height: 100vh;
+        width: 100vw;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 9999;
+      "
+    >
+      Loading IEEE CAS...
+    </div>
     <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
+    <script>
+    window.addEventListener("load", () => {
+      const loader = document.getElementById("loader");
+      const root = document.getElementById("root");
+
+      loader.style.transition = "opacity 0.5s";
+      loader.style.opacity = "0";
+
+      setTimeout(() => {
+        loader.style.display = "none";
+        root.style.display = "block";
+        
+        const script = document.createElement("script");
+        script.type = "module";
+        script.src = "/src/main.jsx";
+        document.body.appendChild(script);
+      }, 500); 
+    });
+  </script>
   </body>
 </html>
