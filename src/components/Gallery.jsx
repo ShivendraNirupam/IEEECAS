@@ -2,16 +2,26 @@ import { Canvas } from "@react-three/fiber";
 import { Suspense } from "react";
 import { Experience } from "./Experience";
 import { UI } from "./UI";
+import { MobileGallery } from "./MobileGallery";
 
 const Gallery = ({ id }) => {
   return (
     <section id={id}>
-      <div id={id} className="lg:hidden">
-        <div className="hidden lg:flex flex-col justify-center items-center">
-          <h1 className="text-3xl italic">Event Gallery</h1>
+      <section className="w-full flex flex-col items-center justify-center bg-black md:py-14 mt-24 mb-24">
+        <h1 className="md:text-4xl text-3xl lg:text-5xl font-bold text-center text-white z-20">
+          Event Gallery
+        </h1>
+
+        <div className="w-full flex flex-col items-center mt-10">
+          <div data-aos="zoom-in" className="flex justify-center items-center w-full">
+            <div className="w-[60%] md:w-1/2 h-0.5 bg-gradient-to-r from-transparent via-white to-transparent" />
+          </div>
         </div>
+      </section>
+      <div className="h-full w-full block lg:hidden">
+        <MobileGallery />
       </div>
-      <div className="book hidden xl:flex flex-col absolute justify-center items-center">
+      <div className="book hidden lg:flex flex-col absolute justify-center items-center">
         
         <Canvas
           className="mt-32"
