@@ -1,5 +1,4 @@
 import { Globe } from "../components/magicui/globe";
-import CopyEmailButton from "../components/CopyEmailButton";
 import Animation from "./Animation";
 
 const Grid = ({ id }) => {
