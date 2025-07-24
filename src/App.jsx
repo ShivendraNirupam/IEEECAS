@@ -7,27 +7,11 @@ import About from "./components/About";
 import Board from "./components/Board";
 import Gallery from "./components/Gallery";
 import Footer from "./components/Footer";
-import Loader from "./components/Loader";
 
 
 
 const App = () => {
 
-   const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-
-    const handlePageLoad = () => {
-      setTimeout(() => setIsLoading(false), 500); // optional small delay for smooth fade
-    };
-
-    if (document.readyState === "complete") {
-      handlePageLoad();
-    } else {
-      window.addEventListener("load", handlePageLoad);
-      return () => window.removeEventListener("load", handlePageLoad);
-    }
-  }, [])
   
   useEffect(() => {
     AOS.init({
@@ -36,9 +20,7 @@ const App = () => {
     })
   }, [])
   return (
-
-      <>
-      {isLoading ? <Loader /> : <main className="overflow-x-hidden">
+<main className="overflow-x-hidden">
       {/* Gradient image */}
       <img className="absolute top-0 right-0 opacity-60 -z-10" src="/assets/gradient.png" alt="Gradient" />
       {/* Blur effect */}
@@ -62,8 +44,7 @@ const App = () => {
             </div>
       <Gallery id="gallery" />
       <Footer />
-    </main>}
-    </>
+    </main>
     
   )
 }
