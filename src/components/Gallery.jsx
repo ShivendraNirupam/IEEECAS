@@ -7,7 +7,7 @@ const Gallery = ({ id }) => {
   return (
     <section id={id}>
       <div id={id} className="lg:hidden">
-        <div className="lg:hidden flex flex-col justify-center items-center">
+        <div className="hidden lg:flex flex-col justify-center items-center">
           <h1 className="text-3xl italic">Event Gallery</h1>
         </div>
       </div>
