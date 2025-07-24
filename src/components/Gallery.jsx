@@ -1,4 +1,3 @@
-import { Loader } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 import { Suspense } from "react";
 import { Experience } from "./Experience";
@@ -13,10 +12,7 @@ const Gallery = ({ id }) => {
         </div>
       </div>
       <div className="book hidden xl:flex flex-col absolute justify-center items-center">
-        <Loader />
-        <div className="m-2 p-4 w-full flex items-center justify-center">
-          <h1 className="text-6xl font-bold">Event Gallery</h1>
-        </div>
+        
         <Canvas
           className="mt-32"
           shadows
