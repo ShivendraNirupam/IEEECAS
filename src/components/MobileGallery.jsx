@@ -33,7 +33,7 @@ export function MobileGallery() {
         src:"/textures/ten.jpg",
     },
     {
-        src:"/textures/oneleven.jpg",
+        src:"/textures/eleven.jpg",
     },
   ];
   return <AnimatedTestimonials testimonials={testimonials} />;

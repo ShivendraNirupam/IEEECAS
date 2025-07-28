@@ -1,7 +1,6 @@
 "use client";
 
 import { cn } from "../lib/utils";
-
 import React, {
   createContext,
   useState,
@@ -12,6 +11,17 @@ import React, {
 
 const MouseEnterContext = createContext(undefined);
 
+export const useMouseEnter = () => {
+  const context = useContext(MouseEnterContext);
+  if (context === undefined) {
+    throw new Error("useMouseEnter must be used within a MouseEnterProvider");
+  }
+  return context;
+};
+
+const isMobileDevice = () =>
+  typeof window !== "undefined" && window.innerWidth <= 768;
+
 export const CardContainer = ({
   children,
   className,
@@ -19,9 +29,17 @@ export const CardContainer = ({
 }) => {
   const containerRef = useRef(null);
   const [isMouseEntered, setIsMouseEntered] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    setIsMobile(isMobileDevice());
+    const handleResize = () => setIsMobile(isMobileDevice());
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   const handleMouseMove = (e) => {
-    if (!containerRef.current) return;
+    if (isMobile || !containerRef.current) return;
     const { left, top, width, height } =
       containerRef.current.getBoundingClientRect();
     const x = (e.clientX - left - width / 2) / 25;
@@ -29,22 +47,23 @@ export const CardContainer = ({
     containerRef.current.style.transform = `rotateY(${x}deg) rotateX(${y}deg)`;
   };
 
-  const handleMouseEnter = (e) => {
+  const handleMouseEnter = () => {
+    if (isMobile) return;
     setIsMouseEntered(true);
-    if (!containerRef.current) return;
   };
 
-  const handleMouseLeave = (e) => {
-    if (!containerRef.current) return;
+  const handleMouseLeave = () => {
+    if (isMobile || !containerRef.current) return;
     setIsMouseEntered(false);
     containerRef.current.style.transform = `rotateY(0deg) rotateX(0deg)`;
   };
+
   return (
     <MouseEnterContext.Provider value={[isMouseEntered, setIsMouseEntered]}>
       <div
         className={cn("py-20 flex items-center justify-center", containerClassName)}
         style={{
-          perspective: "1000px",
+          perspective: isMobile ? "none" : "1000px",
         }}>
         <div
           ref={containerRef}
@@ -96,17 +115,27 @@ export const CardItem = ({
   const [isMouseEntered] = useMouseEnter();
 
   useEffect(() => {
-    handleAnimations();
-  }, [isMouseEntered]);
-
-  const handleAnimations = () => {
+    const isMobile = isMobileDevice();
     if (!ref.current) return;
+
+    if (isMobile) {
+      ref.current.style.transform = `none`;
+      return;
+    }
+
     if (isMouseEntered) {
-      ref.current.style.transform = `translateX(${translateX}px) translateY(${translateY}px) translateZ(${translateZ}px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) rotateZ(${rotateZ}deg)`;
+      ref.current.style.transform = `
+        translateX(${translateX}px)
+        translateY(${translateY}px)
+        translateZ(${translateZ}px)
+        rotateX(${rotateX}deg)
+        rotateY(${rotateY}deg)
+        rotateZ(${rotateZ}deg)
+      `;
     } else {
       ref.current.style.transform = `translateX(0px) translateY(0px) translateZ(0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg)`;
     }
-  };
+  }, [isMouseEntered]);
 
   return (
     <Tag
@@ -116,13 +145,4 @@ export const CardItem = ({
       {children}
     </Tag>
   );
-};
-
-// Create a hook to use the context
-export const useMouseEnter = () => {
-  const context = useContext(MouseEnterContext);
-  if (context === undefined) {
-    throw new Error("useMouseEnter must be used within a MouseEnterProvider");
-  }
-  return context;
 };

@@ -117,7 +117,7 @@ const Page = ({ number, front, back, page, opened, bookClosed, ...props }) => {
         bone.position.x = SEGMENT_WIDTH;
       }
       if (i > 0) {
-        bones[i - 1].add(bone); // attach the new bone to the previous bone
+        bones[i - 1].add(bone); 
       }
     }
     const skeleton = new Skeleton(bones);
@@ -160,7 +160,6 @@ const Page = ({ number, front, back, page, opened, bookClosed, ...props }) => {
     return mesh;
   }, []);
 
-  // useHelper(skinnedMeshRef, SkeletonHelper, "red");
 
   useFrame((_, delta) => {
     if (!skinnedMeshRef.current) {
