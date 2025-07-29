@@ -1,12 +1,47 @@
-# React + Vite
+# 🔷 IEEE CAS Website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Welcome to the official website of the **IEEE Circuits and Systems Society (CAS)** student chapter!  
+This site is built using modern React with Vite for ultra-fast development and Tailwind CSS for sleek, responsive design.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🌐 Live Demo
 
-## Expanding the ESLint configuration
+🚀 [View Website](https://ieeecasvit.vercel.app/)
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## 🛠 Tech Stack
+
+| Tech           | Description                                 |
+|----------------|---------------------------------------------|
+| [React](https://reactjs.org)        | UI library for building components |
+| [Vite](https://vitejs.dev)          | Fast build tool and development server |
+| [Tailwind CSS](https://tailwindcss.com) | Utility-first CSS framework       |
+| [React Icons](https://react-icons.github.io/react-icons/) | Icon library                      |
+| [Netlify](https://netlify.com) or [Vercel](https://vercel.com) | For hosting and deployment       |
+
+---
+
+## 📦 Installation
+
+1. **Clone the repository**
+```bash
+git clone https://github.com/ShivendraNirupam/IEEECAS.git
+cd IEEECAS
+npm install
+npm run dev
+```
+
+IEEECAS/
+├── public/             
+├── src/
+│   ├── components/     
+│   ├── pages/           
+│   ├── App.jsx          
+│   └── main.jsx        
+├── tailwind.config.js   
+├── index.html           
+├── package.json        
+└── README.md           
+
